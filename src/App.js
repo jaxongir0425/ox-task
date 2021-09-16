@@ -1,25 +1,49 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import "./App.css";
+import { Switch, Route, withRouter } from "react-router-dom";
+import Navbar from "./components/navbar/Navbar";
+import Login from "./components/login/Login";
+import Product from "./components/products/Product";
+import Home from "./components/home/Home";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      auth: false,
+    };
+  }
+
+  componentDidMount() {
+    const { history } = this.props;
+    const token = localStorage.getItem("token");
+    if (!token) {
+      history.push("/");
+    } else {
+      this.setState({ auth: true });
+    }
+  }
+
+  render() {
+    const { auth } = this.state;
+
+    return (
+      <>
+        {auth ? (
+          <>
+            <Navbar />
+            <Switch>
+              <Route path="/" exact component={Home} />
+              <Route path="/products" exact component={Product} />
+            </Switch>
+          </>
+        ) : (
+          <Login />
+        )}
+      </>
+    );
+  }
 }
 
-export default App;
+export default withRouter(App);
