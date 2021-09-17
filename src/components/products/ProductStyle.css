@@ -2,3 +2,48 @@
   margin: 0 auto;
   width: 85%;
 }
+
+.product-title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 0.5rem;
+  text-align: center;
+}
+
+.data-table {
+  border-collapse: collapse;
+  width: 100%;
+  font-weight: 600;
+}
+
+.data-table td,
+.data-table th {
+  border: 2px solid #ddd;
+  padding: 8px;
+}
+
+.data-table tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.data-table tr:hover {
+  background-color: #ddd;
+}
+
+.data-table th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #1f5156;
+  color: white;
+}
+
+.data-table-input {
+  width: 90%;
+  padding: 0.7rem 1rem;
+  margin: 3% 5% 2% 5%;
+  box-sizing: border-box;
+  border-radius: 5px;
+  outline: none;
+  border: 2px solid #ddd;
+}
